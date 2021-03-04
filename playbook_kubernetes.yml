@@ -35,23 +35,25 @@
 
 
 - hosts: k8-master
-  become: true
   tasks:
     - name: Probe the br_netfilter kernel module
+      become: yes
       shell: modprobe br_netfilter
 
     - name: Create a network bridge
+      become: yes
       sysctl:
         name: net.bridge.bridge-nf-call-iptables
         value: '1'
-        sysctl_set: yes
 
     - name: Enable IP forwarding
+      become: yes
       sysctl:
         name: net.ipv4.ip_forward
         value: '1'
 
     - name: Reset kubeadm (this allows us to run `kubeadm init` every time)
+      become: yes
       shell: kubeadm reset --force
 
     - name: Create a .kube directory
@@ -61,21 +63,41 @@
         mode: '0755'
 
     - name: Initialize kubeadm
+      become: yes
       # latest version of Ansible supports the `ansible.builtin.shell` key, the stable version needs the `shell` key
       shell: kubeadm init
 
     - name: Copy admin.conf
+      become: yes
       copy:
+        remote_src: true
         src: /etc/kubernetes/admin.conf
         dest: /home/ubuntu/.kube/config
-        remote_src: yes
         owner: "{{ ansible_ssh_user }}"
         group: "{{ ansible_ssh_user }}"
         mode: '0644'
+#      shell: |
+#        cp /etc/kubernetes/admin.conf /home/ubuntu/.kube/config
+#        chmod 644 /home/ubuntu/.kube/config
+#        chown ubuntu: /home/ubuntu/.kube/config
 
     - name: Install the kubernetes Weave Net addon
-      shell: KUBECONFIG=/home/ubuntu/.kube/config kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+      shell: kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 
+    - name: Taint all nodes
+      shell: kubectl taint nodes --all node-role.kubernetes.io/master-
+
+    - name: Save kubeadm join information for following plays
+      shell:
+        cmd: kubeadm token create --print-join-command
+        register: kubeadm_token
+
+
+    - name: Verify if token was correctly captured
+      debug:
+        msg: "token is: {{ kubeadm_token.stdout }}"
+
+    #         kubectl create -f "https://gist.githubusercontent.com/r-whites/ac8464d7422768bbae96db1f2cd59490/raw/d0aab539844b24a0f954ed4fd78476c83f99b241/components.yaml"
 
 
 
