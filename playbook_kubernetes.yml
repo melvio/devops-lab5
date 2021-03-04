@@ -4,3 +4,33 @@
   tasks:
     - name: Bootstrap a host without python2 installed
       raw: test -e /usr/bin/python || (apt -y update && apt install -y python)
+
+    - name: Update apt-cache
+      apt:
+        update_cache: yes  # equivalent to `apt-get update`
+
+    - name: Install packages
+      apt:
+        pkg:
+        - containerd
+        - apt-transport-https
+
+
+    - name: Add google cloud apt signing key
+      ansible.builtin.apt_key:
+        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+        state: present
+
+    - name: Add kubernetes repository
+      ansible.builtin.apt_repository:
+        repo: deb http://apt.kubernetes.io/ kubernetes-xenial main # works like `apt-add-repository`
+
+    - name: Install kubernetes packages
+      apt:
+        pkg:
+          - kubelet
+          - kubeadm
+          - kubernetes-cni
+
+
+
