@@ -1,0 +1,12 @@
+- hosts: all
+  become: true
+  gather_facts: False
+  tasks:
+    - name: Bootstrap a host without python2 installed
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python)
+
+    - name: Update apt-cache
+      apt: update_cache=yes
+
+    - name: Install openjdk-11-jdk
+      apt: name=openjdk-11-jdk state=latest
