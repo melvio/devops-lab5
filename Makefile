@@ -10,6 +10,7 @@ playbook_example1:
 playbook_example2:
 	ansible-playbook -i aws_hosts2 playbook_example2.yml
 
-
+playbook_kubernetes:
+	ansible-playbook -i aws_kubernetes_hosts.ini playbook_kubernetes.yml
 
 
