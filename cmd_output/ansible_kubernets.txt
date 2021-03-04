@@ -1,0 +1,162 @@
++$ ansible-playbook -i aws_kubernetes_hosts.ini playbook_kubernetes.yml
+[DEPRECATION WARNING]: The TRANSFORM_INVALID_GROUP_CHARS settings is set to allow bad characters in group names by default, this will change, but still be user configurable on deprecation. This feature will be removed in version
+2.10. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+[WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
+
+PLAY [all] *****************************************************************************************************************************************************************************************************************************
+
+TASK [Bootstrap a host without python2 installed] **************************************************************************************************************************************************************************************
+changed: [ec2-52-90-208-59.compute-1.amazonaws.com]
+changed: [ec2-18-207-249-212.compute-1.amazonaws.com]
+changed: [ec2-3-93-180-82.compute-1.amazonaws.com]
+changed: [ec2-54-161-0-148.compute-1.amazonaws.com]
+changed: [ec2-54-175-213-36.compute-1.amazonaws.com]
+
+TASK [Update apt-cache] ****************************************************************************************************************************************************************************************************************
+[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host ec2-3-93-180-82.compute-1.amazonaws.com should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A future Ansible
+release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information. This feature will be removed in version
+2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+changed: [ec2-3-93-180-82.compute-1.amazonaws.com]
+[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host ec2-54-175-213-36.compute-1.amazonaws.com should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A future Ansible
+release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information. This feature will be removed in version
+2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+changed: [ec2-54-175-213-36.compute-1.amazonaws.com]
+[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host ec2-54-161-0-148.compute-1.amazonaws.com should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A future Ansible
+release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information. This feature will be removed in version
+2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+changed: [ec2-54-161-0-148.compute-1.amazonaws.com]
+[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host ec2-52-90-208-59.compute-1.amazonaws.com should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A future Ansible
+release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information. This feature will be removed in version
+2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+changed: [ec2-52-90-208-59.compute-1.amazonaws.com]
+[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host ec2-18-207-249-212.compute-1.amazonaws.com should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A future Ansible
+release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information. This feature will be removed in version
+2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+changed: [ec2-18-207-249-212.compute-1.amazonaws.com]
+
+TASK [Install packages] ****************************************************************************************************************************************************************************************************************
+ok: [ec2-3-93-180-82.compute-1.amazonaws.com]
+ok: [ec2-54-175-213-36.compute-1.amazonaws.com]
+ok: [ec2-52-90-208-59.compute-1.amazonaws.com]
+ok: [ec2-54-161-0-148.compute-1.amazonaws.com]
+ok: [ec2-18-207-249-212.compute-1.amazonaws.com]
+
+TASK [Add google cloud apt signing key] ************************************************************************************************************************************************************************************************
+ok: [ec2-3-93-180-82.compute-1.amazonaws.com]
+ok: [ec2-54-175-213-36.compute-1.amazonaws.com]
+ok: [ec2-54-161-0-148.compute-1.amazonaws.com]
+ok: [ec2-18-207-249-212.compute-1.amazonaws.com]
+ok: [ec2-52-90-208-59.compute-1.amazonaws.com]
+
+TASK [Add kubernetes repository] *******************************************************************************************************************************************************************************************************
+ok: [ec2-3-93-180-82.compute-1.amazonaws.com]
+ok: [ec2-54-175-213-36.compute-1.amazonaws.com]
+ok: [ec2-54-161-0-148.compute-1.amazonaws.com]
+ok: [ec2-18-207-249-212.compute-1.amazonaws.com]
+ok: [ec2-52-90-208-59.compute-1.amazonaws.com]
+
+TASK [Install kubernetes packages] *****************************************************************************************************************************************************************************************************
+ok: [ec2-3-93-180-82.compute-1.amazonaws.com]
+ok: [ec2-54-175-213-36.compute-1.amazonaws.com]
+ok: [ec2-18-207-249-212.compute-1.amazonaws.com]
+ok: [ec2-54-161-0-148.compute-1.amazonaws.com]
+ok: [ec2-52-90-208-59.compute-1.amazonaws.com]
+
+PLAY [k8-master] ***********************************************************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************************************************************************************************************
+ok: [ec2-18-207-249-212.compute-1.amazonaws.com]
+
+TASK [Probe the br_netfilter kernel module] ********************************************************************************************************************************************************************************************
+changed: [ec2-18-207-249-212.compute-1.amazonaws.com]
+
+TASK [Create a network bridge] *********************************************************************************************************************************************************************************************************
+ok: [ec2-18-207-249-212.compute-1.amazonaws.com]
+
+TASK [Enable IP forwarding] ************************************************************************************************************************************************************************************************************
+ok: [ec2-18-207-249-212.compute-1.amazonaws.com]
+
+TASK [Reset kubeadm (this allows us to run `kubeadm init` every time)] *****************************************************************************************************************************************************************
+changed: [ec2-18-207-249-212.compute-1.amazonaws.com]
+
+TASK [Create a .kube directory] ********************************************************************************************************************************************************************************************************
+ok: [ec2-18-207-249-212.compute-1.amazonaws.com]
+
+TASK [Initialize kubeadm] **************************************************************************************************************************************************************************************************************
+changed: [ec2-18-207-249-212.compute-1.amazonaws.com]
+
+TASK [Copy admin.conf] *****************************************************************************************************************************************************************************************************************
+changed: [ec2-18-207-249-212.compute-1.amazonaws.com]
+
+TASK [Install the kubernetes Weave Net addon] ******************************************************************************************************************************************************************************************
+changed: [ec2-18-207-249-212.compute-1.amazonaws.com]
+
+TASK [Taint all nodes] *****************************************************************************************************************************************************************************************************************
+changed: [ec2-18-207-249-212.compute-1.amazonaws.com]
+
+TASK [Save kubeadm join command for following plays] ***********************************************************************************************************************************************************************************
+changed: [ec2-18-207-249-212.compute-1.amazonaws.com]
+
+TASK [add kubeadm_join to host] ********************************************************************************************************************************************************************************************************
+changed: [ec2-18-207-249-212.compute-1.amazonaws.com]
+
+PLAY [worker] **************************************************************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************************************************************************************************************
+ok: [ec2-54-175-213-36.compute-1.amazonaws.com]
+ok: [ec2-52-90-208-59.compute-1.amazonaws.com]
+ok: [ec2-54-161-0-148.compute-1.amazonaws.com]
+ok: [ec2-3-93-180-82.compute-1.amazonaws.com]
+
+TASK [Probe the br_netfilter kernel module] ********************************************************************************************************************************************************************************************
+changed: [ec2-52-90-208-59.compute-1.amazonaws.com]
+changed: [ec2-54-161-0-148.compute-1.amazonaws.com]
+changed: [ec2-54-175-213-36.compute-1.amazonaws.com]
+changed: [ec2-3-93-180-82.compute-1.amazonaws.com]
+
+TASK [Verify if variable was correctly captured] ***************************************************************************************************************************************************************************************
+ok: [ec2-52-90-208-59.compute-1.amazonaws.com] => {
+    "msg": "cmd is: kubeadm join 172.31.76.0:6443 --token 5z2guv.hntak509i4z7z4jp     --discovery-token-ca-cert-hash sha256:2c985a140686ee76825cbf5723360c4be99756893178ecdcc9ce2fbb2d195f93 "
+}
+ok: [ec2-3-93-180-82.compute-1.amazonaws.com] => {
+    "msg": "cmd is: kubeadm join 172.31.76.0:6443 --token 5z2guv.hntak509i4z7z4jp     --discovery-token-ca-cert-hash sha256:2c985a140686ee76825cbf5723360c4be99756893178ecdcc9ce2fbb2d195f93 "
+}
+ok: [ec2-54-161-0-148.compute-1.amazonaws.com] => {
+    "msg": "cmd is: kubeadm join 172.31.76.0:6443 --token 5z2guv.hntak509i4z7z4jp     --discovery-token-ca-cert-hash sha256:2c985a140686ee76825cbf5723360c4be99756893178ecdcc9ce2fbb2d195f93 "
+}
+ok: [ec2-54-175-213-36.compute-1.amazonaws.com] => {
+    "msg": "cmd is: kubeadm join 172.31.76.0:6443 --token 5z2guv.hntak509i4z7z4jp     --discovery-token-ca-cert-hash sha256:2c985a140686ee76825cbf5723360c4be99756893178ecdcc9ce2fbb2d195f93 "
+}
+
+TASK [Reset kubeadm (this allows us to run `kubeadm init` every time)] *****************************************************************************************************************************************************************
+changed: [ec2-54-175-213-36.compute-1.amazonaws.com]
+changed: [ec2-3-93-180-82.compute-1.amazonaws.com]
+changed: [ec2-54-161-0-148.compute-1.amazonaws.com]
+changed: [ec2-52-90-208-59.compute-1.amazonaws.com]
+
+TASK [Execute the join command] ********************************************************************************************************************************************************************************************************
+changed: [ec2-52-90-208-59.compute-1.amazonaws.com]
+changed: [ec2-54-175-213-36.compute-1.amazonaws.com]
+changed: [ec2-3-93-180-82.compute-1.amazonaws.com]
+changed: [ec2-54-161-0-148.compute-1.amazonaws.com]
+
+PLAY [k8-master] ***********************************************************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************************************************************************************************************
+ok: [ec2-18-207-249-212.compute-1.amazonaws.com]
+
+TASK [kubectl get nodes] ***************************************************************************************************************************************************************************************************************
+changed: [ec2-18-207-249-212.compute-1.amazonaws.com]
+
+TASK [Log the result of running kubectl get nodes] *************************************************************************************************************************************************************************************
+ok: [ec2-18-207-249-212.compute-1.amazonaws.com] => {
+    "msg": " NAME               STATUS     ROLES                  AGE   VERSION\nip-172-31-18-132   NotReady   <none>                 5s    v1.20.4\nip-172-31-35-254   NotReady   <none>                 5s    v1.20.4\nip-172-31-37-250   NotReady   <none>                 5s    v1.20.4\nip-172-31-44-239   NotReady   <none>                 5s    v1.20.4\nip-172-31-76-0     Ready      control-plane,master   37s   v1.20.4 "
+}
+
+PLAY RECAP *****************************************************************************************************************************************************************************************************************************
+ec2-18-207-249-212.compute-1.amazonaws.com : ok=21   changed=11   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+ec2-3-93-180-82.compute-1.amazonaws.com : ok=11   changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+ec2-52-90-208-59.compute-1.amazonaws.com : ok=11   changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+ec2-54-161-0-148.compute-1.amazonaws.com : ok=11   changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+ec2-54-175-213-36.compute-1.amazonaws.com : ok=11   changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
