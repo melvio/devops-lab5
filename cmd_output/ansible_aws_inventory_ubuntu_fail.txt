@@ -1,0 +1,10 @@
+ec2-54-166-253-178.compute-1.amazonaws.com | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Connection closed by 54.166.253.178 port 22",
+    "unreachable": true
+}
+ec2-3-85-228-2.compute-1.amazonaws.com | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Connection closed by 3.85.228.2 port 22",
+    "unreachable": true
+}

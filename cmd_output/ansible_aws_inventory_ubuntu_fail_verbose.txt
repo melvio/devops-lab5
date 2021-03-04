@@ -1,0 +1,28 @@
+ansible 2.9.6
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = ['/home/m/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 3.8.5 (default, Jul 28 2020, 12:59:40) [GCC 9.3.0]
+Using /etc/ansible/ansible.cfg as config file
+host_list declined parsing /home/m/Documents/sv/uva/master-courses/cloud-devops/w5/lab5/aws_hosts1 as it did not pass its verify_file() method
+script declined parsing /home/m/Documents/sv/uva/master-courses/cloud-devops/w5/lab5/aws_hosts1 as it did not pass its verify_file() method
+auto declined parsing /home/m/Documents/sv/uva/master-courses/cloud-devops/w5/lab5/aws_hosts1 as it did not pass its verify_file() method
+Parsed /home/m/Documents/sv/uva/master-courses/cloud-devops/w5/lab5/aws_hosts1 inventory source with ini plugin
+META: ran handlers
+<ec2-3-85-228-2.compute-1.amazonaws.com> ESTABLISH SSH CONNECTION FOR USER: ec2-user
+<ec2-3-85-228-2.compute-1.amazonaws.com> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o 'IdentityFile="/home/m/Documents/sv/devops/w5/lab5/devops_instance_keypair.pem"' -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="ec2-user"' -o ConnectTimeout=10 -o StrictHostKeyChecking=no -o ControlPath=/home/m/.ansible/cp/19dd494f4f ec2-3-85-228-2.compute-1.amazonaws.com '/bin/sh -c '"'"'echo ~ec2-user && sleep 0'"'"''
+<ec2-54-166-253-178.compute-1.amazonaws.com> ESTABLISH SSH CONNECTION FOR USER: ec2-user
+<ec2-54-166-253-178.compute-1.amazonaws.com> SSH: EXEC ssh -C -o ControlMaster=auto -o ControlPersist=60s -o 'IdentityFile="/home/m/Documents/sv/devops/w5/lab5/devops_instance_keypair.pem"' -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="ec2-user"' -o ConnectTimeout=10 -o StrictHostKeyChecking=no -o ControlPath=/home/m/.ansible/cp/f9668c4ba0 ec2-54-166-253-178.compute-1.amazonaws.com '/bin/sh -c '"'"'echo ~ec2-user && sleep 0'"'"''
+<ec2-54-166-253-178.compute-1.amazonaws.com> (255, b'', b'Connection closed by 54.166.253.178 port 22\r\n')
+ec2-54-166-253-178.compute-1.amazonaws.com | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Connection closed by 54.166.253.178 port 22",
+    "unreachable": true
+}
+<ec2-3-85-228-2.compute-1.amazonaws.com> (255, b'', b'Connection closed by 3.85.228.2 port 22\r\n')
+ec2-3-85-228-2.compute-1.amazonaws.com | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Connection closed by 3.85.228.2 port 22",
+    "unreachable": true
+}
