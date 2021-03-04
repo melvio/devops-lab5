@@ -33,4 +33,56 @@
           - kubernetes-cni
 
 
+- hosts: k8-master
+  become: true
+  tasks:
+    - name: Probe the br_netfilter kernel module
+      shell: modprobe br_netfilter
+
+    - name: Create a network bridge
+      sysctl:
+        name: net.bridge.bridge-nf-call-iptables
+        value: '1'
+        sysctl_set: yes
+
+    - name: Enable IP forwarding
+      sysctl:
+        name: net.ipv4.ip_forward
+        value: '1'
+
+
+    - name: Initialize kubeadm
+      # latest version supports the `ansible.builtin.shell` key, the stable version needs the `shell` key (04-03-2021)
+      shell: kubeadm init
+
+    - name: Create a .kube directory
+      file:
+        path: /home/ubuntu/.kube
+        state: directory
+        mode: '0755'
+
+    - name: Copy admin.conf
+      copy:
+        src: /etc/kubernetes/admin.conf
+        dest: /home/ubuntu/.kube/
+        remote_src: yes
+        owner: "{{ ansible_ssh_user }}"
+        group: "{{ ansible_ssh_user }}"
+        mode: '0644'
+
+
+
+
+
+
+
+
+
+# for later:
+#- hosts: k8-master
+#  become: true
+#  tasks:
+#    - name: Kubernetes Metrics Server
+#      shell: kubectl apply -f https://gist.githubusercontent.com/r-whites/ac8464d7422768bbae96db1f2cd59490/raw/d0aab539844b24a0f954ed4fd78476c83f99b241/components.yaml
+
 
