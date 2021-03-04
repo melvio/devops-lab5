@@ -8,11 +8,13 @@ ec2-54-166-253-178.compute-1.amazonaws.com
 aws-ubuntu
 aws-amazon
 
-[aws-amazon:vars]
-ansible_ssh_user=ec2-user
+[aws:vars]
 ansible_ssh_private_key_file=/home/m/Documents/sv/devops/w5/lab5/devops_instance_keypair.pem
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
- 
+
+[aws-amazon:vars]
+ansible_ssh_user=ec2-user
+
 [aws-ubuntu:vars]
 ansible_ssh_user=ubuntu
 
