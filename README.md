@@ -1,8 +1,17 @@
 # devops-lab5
 
 
-`playbook_kubernetes.yml` - playbook for assignment 5.1     
-`aws_kubernetes_hosts.ini` - inventory file for assignment 5.1    
+### summary of project structure
+
+`playbook_kubernetes.yml` - playbook for assignment 6.1     
+`aws_kubernetes_hosts.ini` - inventory file for assignment 6.1      
+`Makefile` - a convenience file for executing often used commands
+
+
+`lab/` - pdf files that describe this lab 
+`introduction/` - content related to introductory content (section 5)
+
+
 
 
  
