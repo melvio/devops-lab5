@@ -1,7 +1,10 @@
 # devops-lab5
 
 
-playbook_kubernetes.yml - playbook for assignment 5.1
+`playbook_kubernetes.yml` - playbook for assignment 5.1     
+`aws_kubernetes_hosts.ini` - inventory file for assignment 5.1    
+
+
  
 
 

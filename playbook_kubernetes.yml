@@ -117,7 +117,7 @@
 
 - hosts: k8-master
   tasks:
-    - name: kubectl get nodes
+    - name: Execute kubectl get nodes and register the output
       shell:
         cmd: kubectl get nodes
       register: kubectl_get_nodes
