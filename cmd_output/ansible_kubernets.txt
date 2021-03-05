@@ -1,8 +1,4 @@
-+$ ansible-playbook -i aws_kubernetes_hosts.ini playbook_kubernetes.yml
-[DEPRECATION WARNING]: The TRANSFORM_INVALID_GROUP_CHARS settings is set to allow bad characters in group names by default, this will change, but still be user configurable on deprecation. This feature will be removed in version
-2.10. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
-[WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see details
-
+$ ansible-playbook -i aws_kubernetes_hosts.ini playbook_kubernetes.yml
 PLAY [all] *****************************************************************************************************************************************************************************************************************************
 
 TASK [Bootstrap a host without python2 installed] **************************************************************************************************************************************************************************************
@@ -13,25 +9,10 @@ changed: [ec2-54-161-0-148.compute-1.amazonaws.com]
 changed: [ec2-54-175-213-36.compute-1.amazonaws.com]
 
 TASK [Update apt-cache] ****************************************************************************************************************************************************************************************************************
-[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host ec2-3-93-180-82.compute-1.amazonaws.com should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A future Ansible
-release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information. This feature will be removed in version
-2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
 changed: [ec2-3-93-180-82.compute-1.amazonaws.com]
-[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host ec2-54-175-213-36.compute-1.amazonaws.com should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A future Ansible
-release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information. This feature will be removed in version
-2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
 changed: [ec2-54-175-213-36.compute-1.amazonaws.com]
-[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host ec2-54-161-0-148.compute-1.amazonaws.com should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A future Ansible
-release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information. This feature will be removed in version
-2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
 changed: [ec2-54-161-0-148.compute-1.amazonaws.com]
-[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host ec2-52-90-208-59.compute-1.amazonaws.com should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A future Ansible
-release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information. This feature will be removed in version
-2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
 changed: [ec2-52-90-208-59.compute-1.amazonaws.com]
-[DEPRECATION WARNING]: Distribution Ubuntu 18.04 on host ec2-18-207-249-212.compute-1.amazonaws.com should use /usr/bin/python3, but is using /usr/bin/python for backward compatibility with prior Ansible releases. A future Ansible
-release will default to using the discovered platform python for this host. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information. This feature will be removed in version
-2.12. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
 changed: [ec2-18-207-249-212.compute-1.amazonaws.com]
 
 TASK [Install packages] ****************************************************************************************************************************************************************************************************************
