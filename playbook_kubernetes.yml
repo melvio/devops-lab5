@@ -126,6 +126,11 @@
       debug:
         msg: " {{ kubectl_get_nodes.stdout }} "
 
+    # todo: check the output
+    - name: Log the result of running kubectl get nodes (2)
+      debug:
+        verbosity: 2
+        var: kubect_get_nodes
 
 
 
