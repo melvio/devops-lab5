@@ -12,6 +12,7 @@ Lab files:
 
 
 Other files and directories:     
+* `screenshots/` - directory with screenshots for assignment 6
 * `Makefile` - a convenience file for executing often used commands
 * `lab/` - directory with  PDF files that describe this lab 
 * `introduction/` - content related to introductory content (section 5)
