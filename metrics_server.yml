@@ -1,5 +1,6 @@
-# kubernetes resource file for assignment 6.1
-# source: https://gist.githubusercontent.com/r-whites/ac8464d7422768bbae96db1f2cd59490/raw/d0aab539844b24a0f954ed4fd78476c83f99b241/components.yaml
+# Here is a copy of the Kubernetes resource file for assignment 6.2.
+# In the playbook I use the following url instead:
+# https://gist.githubusercontent.com/r-whites/ac8464d7422768bbae96db1f2cd59490/raw/d0aab539844b24a0f954ed4fd78476c83f99b241/components.yaml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
