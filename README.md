@@ -7,9 +7,10 @@ Lab files:
 * `playbook_kubernetes.yml` - playbook for assignment 6.1     
 * `playbook_performance.yml` - playbook for assignment 6.2
 * `metrics_server.yml` - Kubernetes resource file for assignment 6.2
+   + note that I use a URL in the playbook. This file is just here for sake of reference.
 * `aws_kubernetes_hosts.ini` - inventory file for assignment 6.1 and 6.2
-   + note that you must update the EC2 instances in this file when restarting your instances.
-
+   + note that you must update the URLs in this file when using different instances or when restarting your instances.
+* `cmd_output/` - Screenshots are nice but text is better. So you can find the result of running commands over here.
 
 Other files and directories:     
 * `screenshots/` - directory with screenshots for assignment 6
