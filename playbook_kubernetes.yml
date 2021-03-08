@@ -9,7 +9,8 @@
 
     - name: Update apt-cache
       apt:
-        update_cache: yes  # equivalent to `apt-get update`
+        # similar to `apt-get update`
+        update_cache: yes
 
     - name: Install packages
       apt:
@@ -25,7 +26,8 @@
 
     - name: Add kubernetes repository
       ansible.builtin.apt_repository:
-        repo: deb http://apt.kubernetes.io/ kubernetes-xenial main # works like `apt-add-repository`
+        # similar like `apt-add-repository`
+        repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
 
     - name: Install kubernetes packages
       apt:
