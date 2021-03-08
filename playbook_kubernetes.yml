@@ -65,7 +65,8 @@
 
     - name: Initialize kubeadm
       become: yes
-      # latest version of Ansible supports the `ansible.builtin.shell` key, the stable version needs the `shell` key
+      # Note that the latest version of Ansible supports the `ansible.builtin.shell` key.
+      # I use the stable version which needs the `shell` key.
       shell: kubeadm init
 
     - name: Copy admin.conf
