@@ -1,3 +1,4 @@
+# playbook for assignment 6.1
 # This playbook is compatible with Ansible version 2.9.6
 - hosts: all
   become: true
@@ -32,7 +33,6 @@
           - kubelet
           - kubeadm
           - kubernetes-cni
-
 
 
 - hosts: k8-master
@@ -114,7 +114,6 @@
       shell: "{{ hostvars['kubeadm_join_cmd']['varname'] }}"
 
 
-
 - hosts: k8-master
   tasks:
     - name: Execute kubectl get nodes and register the output
@@ -126,10 +125,9 @@
       debug:
         msg: " {{ kubectl_get_nodes.stdout }} "
 
-    # todo: check the output
     - name: Log the result of running kubectl get nodes (2)
       debug:
-        verbosity: 2
+        verbosity: 1
         var: kubect_get_nodes
 
 

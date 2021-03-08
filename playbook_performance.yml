@@ -1,0 +1,8 @@
+# playbook for assignment 6.2
+# This playbook is compatible with Ansible version 2.9.6
+- hosts: k8-master
+  become: yes
+  tasks:
+    - name: Kubernetes Metrics Server
+      become: true
+      shell: kubectl apply -f ./metrics_server.yml
