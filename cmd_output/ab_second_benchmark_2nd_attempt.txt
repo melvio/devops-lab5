@@ -1,0 +1,56 @@
+# Note the performance increase with the autoscaling after the first attempt.
+$ ab -n 50000 -r -c 500 "http://3.238.177.154:31041/"
+
+This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 3.238.177.154 (be patient)
+Completed 5000 requests
+Completed 10000 requests
+Completed 15000 requests
+Completed 20000 requests
+Completed 25000 requests
+Completed 30000 requests
+Completed 35000 requests
+Completed 40000 requests
+Completed 45000 requests
+Completed 50000 requests
+Finished 50000 requests
+
+
+Server Software:        nginx/1.19.7
+Server Hostname:        3.238.177.154
+Server Port:            31041
+
+Document Path:          /
+Document Length:        612 bytes
+
+Concurrency Level:      500
+Time taken for tests:   67.949 seconds
+Complete requests:      50000
+Failed requests:        0
+Total transferred:      42250000 bytes
+HTML transferred:       30600000 bytes
+Requests per second:    735.85 [#/sec] (mean)
+Time per request:       679.486 [ms] (mean)
+Time per request:       1.359 [ms] (mean, across all concurrent requests)
+Transfer rate:          607.22 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:       87  273 591.8    136   15485
+Processing:    88  364 516.7    163   17174
+Waiting:       87  298 450.6    156   15287
+Total:        175  637 830.5    319   22716
+
+Percentage of the requests served within a certain time (ms)
+  50%    319
+  66%    424
+  75%    852
+  80%    985
+  90%   1302
+  95%   1766
+  98%   3319
+  99%   4103
+ 100%  22716 (longest request)

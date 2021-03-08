@@ -1,4 +1,4 @@
-ansible-playbook -i aws_kubernetes_hosts.ini playbook_performance.yml
+$ ansible-playbook -i aws_kubernetes_hosts.ini playbook_performance.yml
 
 PLAY [k8-master] ************************************************************************************************************************************************************************
 

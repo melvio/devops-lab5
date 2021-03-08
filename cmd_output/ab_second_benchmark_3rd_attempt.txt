@@ -1,0 +1,59 @@
+# To check if the -s flag was the cause of the performance
+# difference, I also tried it with -s again.
+# For the sake of brevity, I do not describe this extra work in the report.
+$ ab -n 50000 -r -c 500 -s 200 "http://3.238.177.154:31041/"
+
+This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 3.238.177.154 (be patient)
+Completed 5000 requests
+Completed 10000 requests
+Completed 15000 requests
+Completed 20000 requests
+Completed 25000 requests
+Completed 30000 requests
+Completed 35000 requests
+Completed 40000 requests
+Completed 45000 requests
+Completed 50000 requests
+Finished 50000 requests
+
+
+Server Software:        nginx/1.19.7
+Server Hostname:        3.238.177.154
+Server Port:            31041
+
+Document Path:          /
+Document Length:        612 bytes
+
+Concurrency Level:      500
+Time taken for tests:   84.285 seconds
+Complete requests:      50000
+Failed requests:        342
+   (Connect: 0, Receive: 114, Length: 114, Exceptions: 114)
+Total transferred:      42166485 bytes
+HTML transferred:       30530232 bytes
+Requests per second:    593.23 [#/sec] (mean)
+Time per request:       842.848 [ms] (mean)
+Time per request:       1.686 [ms] (mean, across all concurrent requests)
+Transfer rate:          488.56 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0  294 712.2    145   31550
+Processing:    88  512 957.4    189   41177
+Waiting:        0  335 606.3    151   18023
+Total:        124  806 1258.4    348   42416
+
+Percentage of the requests served within a certain time (ms)
+  50%    348
+  66%    599
+  75%    981
+  80%   1180
+  90%   1691
+  95%   2631
+  98%   4268
+  99%   6150
+ 100%  42416 (longest request)
